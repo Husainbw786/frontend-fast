@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Users, Search, Loader2, ArrowLeft } from 'lucide-react';
 import { JobDescription, LinkedInApiResponse, LinkedInCandidate } from '../types';
 import { jobDescriptions } from '../data/jobs';
+import { API_ENDPOINTS } from '../config/api';
 import JobCard from './JobCard';
 import LinkedInCandidateTable from './LinkedInCandidateTable';
 import LinkedInCandidateDetails from './LinkedInCandidateDetails';
@@ -23,7 +24,7 @@ export default function LinkedInPage({ onNavigateBack }: LinkedInPageProps) {
     setError(null);
 
     try {
-      const response = await fetch('http://ec2-15-207-107-54.ap-south-1.compute.amazonaws.com:8000/api/v1/find-candidates', {
+      const response = await fetch(API_ENDPOINTS.FIND_CANDIDATES, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

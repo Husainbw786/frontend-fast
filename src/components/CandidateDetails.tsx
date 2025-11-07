@@ -1,5 +1,6 @@
 import { X, Loader2, CheckCircle, XCircle } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { API_ENDPOINTS } from '../config/api';
 
 interface CategoryScore {
   score: number;
@@ -63,7 +64,7 @@ export default function CandidateDetails({
     const fetchATSScore = async () => {
       try {
         const response = await fetch(
-          'http://ec2-15-207-107-54.ap-south-1.compute.amazonaws.com:8000/api/v1/calculate-ats-score',
+          API_ENDPOINTS.CALCULATE_ATS_SCORE,
           {
             method: 'POST',
             headers: {

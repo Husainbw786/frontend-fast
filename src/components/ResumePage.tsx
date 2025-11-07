@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Users, Search, Loader2, Linkedin } from 'lucide-react';
 import { JobDescription, ApiResponse, Candidate } from '../types';
 import { jobDescriptions } from '../data/jobs';
+import { API_ENDPOINTS } from '../config/api';
 import JobCard from './JobCard';
 import CandidateTable from './CandidateTable';
 import CandidateDetails from './CandidateDetails';
@@ -23,7 +24,7 @@ export default function ResumePage({ onNavigateToLinkedIn }: ResumePageProps) {
     setError(null);
 
     try {
-      const response = await fetch('http://ec2-15-207-107-54.ap-south-1.compute.amazonaws.com:8000/api/v1/match-resumes', {
+      const response = await fetch(API_ENDPOINTS.MATCH_RESUMES, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
